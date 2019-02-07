@@ -1,5 +1,6 @@
 const express = require('express');
 const socket = require('socket.io');
+const routes = require('./api/routes');
 
 const app = express();
 
@@ -9,6 +10,8 @@ app.set('port', 3000);
 //     console.log(req.method, req.url);
 //     next();
 // });
+
+app.use('/api', routes);
 
 app.use(express.static('public'));
 
