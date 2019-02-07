@@ -16,9 +16,13 @@ btn.addEventListener('click', () => {
     message.value= "";
 })
 
+message.addEventListener('keydown', () => socket.emit('typing', handle.value));
+
 //Listen for events
 socket.on('chat', data => {
     console.log('chat data received from server: ', data);
     feedback.innerHTML = '';
     output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
+
+socket.on('typing', data => feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>');
