@@ -21,6 +21,8 @@ const io = socket(server);
 io.on('connection', socket => {
     console.log('socket connection made ', socket.id);
 
+    socket.on('disconnect', () => console.log('socket disconnected'));
+
     //Handle chat event
     socket.on('chat', data => {
         console.log("chat data sent from server to sockets : ", data);
