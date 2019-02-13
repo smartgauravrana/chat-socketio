@@ -4,7 +4,10 @@
   "description": "A simple chat app based on socketio",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "client": "cd client && npm run start",
+    "server": "nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,8 +28,10 @@
   },
   "homepage": "https://github.com/smartgauravrana/chat-socketio#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "g": "^2.0.1",
+    "mongoose": "^5.4.11",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {

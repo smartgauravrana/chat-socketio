@@ -1,15 +1,21 @@
+require('./api/data/db');
+require('./api/data/model/user.model');
+
 const express = require('express');
 const socket = require('socket.io');
+const bodyParser = require('body-parser');
 const routes = require('./api/routes');
 
 const app = express();
 
-app.set('port', 3000);
+app.set('port', 5000);
 
-// app.use((req, res, next) => {
-//     console.log(req.method, req.url);
-//     next();
-// });
+app.use((req, res, next) => {
+    console.log(req.method, req.url);
+    next();
+});
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/api', routes);
 
